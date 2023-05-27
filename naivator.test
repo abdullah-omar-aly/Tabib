@@ -1,0 +1,37 @@
+      <Stack.Navigator
+        screenOptions={{
+            headerStyle: {  // backgroundColor: COLORS.primary,
+            },
+            headerTintColor: COLORS.primary, headerTitleAlign: 'center',
+            headerShown: false,
+
+        }}
+        // initialRouteName={ROUTES.APP}
+
+
+    >   
+        
+        <Stack.Screen name={ROUTES.LOGIN} component={LoginScreen} />
+        <Stack.Screen name={ROUTES.VERIFY_OTP} component={VerifyOTPScreen} />
+        {/* <Stack.Screen name={ROUTES.COMPLETE_PROFILE_INFO} component={VerifyOTPScreen} /> */}
+        {/* <Stack.Screen name={ROUTES.APP} component={AppScreen} /> */}
+
+        {/* <Stack.Screen name={ROUTES.APP} component={HomeNavigator} options={{ headerShown: false }} /> */}
+        {/* <Stack.Screen name={ROUTES.VERIFY_ACCOUNT} component={VerifyAccount} /> */}
+        {/* <Stack.Screen name={ROUTES.SUBMIT_VERIFICATION_CODE} component={SubmitVerificationCodeScreen} /> */}
+        {/* <Stack.Screen name={ROUTES.VERIFICATION_SUCCESS} component={VerificationSuccess}  options={{ presentation: 'transparentModal', headerShown: false }} /> */}
+        {/* <Stack.Screen name={ROUTES.FORGOT_PASSWORD} component={ForgotPassword} options={({ route }) => ({
+            // title: route?.params?.userId ,
+            headerShown: true
+        })}
+        initialParams={{ userId: 'abdullah' }}
+    /> */}
+        {/* <Stack.Screen name={ROUTES.COURSE_DETAILS} component={CourseDetailsScreen}  options={{ presentation: 'modal', headerShown: false }}/> */}
+        {/* <Stack.Screen name={ROUTES.EDIT_PROFILE} component={EditProfileScreen}  /> */}
+        {/* <Stack.Screen name={ROUTES.CHANGE_PASSWORD} component={ChangePassword} /> */}
+        {/* <Stack.Screen name={ROUTES.TERMS_CONDITIONS} component={TermsNConditionsScreen}  />
+        <Stack.Screen name={ROUTES.CONTACT_US} component={ContactUsScreen}  /> */}
+        {/* <Stack.Screen name={ROUTES.ABOUT_US} component={AboutUs}  /> */}
+        {/* <Stack.Screen name={ROUTES.PAYMENT_HISTORY} component={PaymentHistory}  /> */}
+        {/* <Stack.Screen name={ROUTES.MY_MODAL} component={VideoModal}  options={{ presentation: 'modal', headerShown: false }}/> */}
+    </Stack.Navigator>
