@@ -44,7 +44,7 @@ export default function ImagePickerExample() {
             const extension = parts[parts.length - 1];
 
             uploadBytes(picRef, fileBlob, {
-                contentType: 'image' + extension
+                contentType: 'image/' + extension
             }).then((snapshot) => {
                 console.log('Uploaded a blob or file!');
             });
@@ -60,16 +60,15 @@ export default function ImagePickerExample() {
     }, [image])
 
     return (
-        <View style={{alignSelf: 'center' , marginVertical: 10}}>
+        <View style={{alignSelf: 'center' , marginBottom: 10}}>
             <TouchableOpacity activeOpacity={0.8} onPress={pickImage}>
                 <ImageBackground
                     source={{ uri: image }}
-                    style={{ width: 200, height: 200, borderRadius: 100, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    style={{ width: 150, height: 150, borderRadius: 100, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                     <Entypo name="camera" size={50} color="rgba(0,0,0,0.5)" />
 
                 </ImageBackground>
-
             </TouchableOpacity>
             {/* <Button title='Upload' onPress={handleSubmit} /> */}
 

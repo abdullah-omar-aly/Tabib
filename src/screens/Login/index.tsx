@@ -20,7 +20,7 @@ const Login = ({ navigation }: any) => {
 
     // const navigation = useNavigation()
 
-    const [value, setValue] = useState("1020304050");
+    const [value, setValue] = useState("102030405");
     const [formattedValue, setFormattedValue] = useState("");
     const [valid, setValid] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
@@ -66,7 +66,7 @@ const Login = ({ navigation }: any) => {
         setValid(checkValid ? checkValid : false);
         // setLoading(true)
         console.log(formattedValue)
-        navigation.replace(ROUTES.VERIFY_OTP)
+        navigation.navigate(ROUTES.VERIFY_OTP, { phoneNumber: formattedValue })
 
 
         // onCaptchVerify();
@@ -96,9 +96,9 @@ const Login = ({ navigation }: any) => {
 
 
         < View style={styles.container} >
-            <StatusBar backgroundColor={COLORS.primary}/>
+            <StatusBar backgroundColor={COLORS.primary} />
             <SafeAreaView style={styles.wrapper}>
-                <View style={{marginBottom: 0}}>
+                <View style={{ marginBottom: 0 }}>
                     <Image
                         source={{ uri: 'https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/users/9dd99ce3-8177-4817-bb92-d768a71e2de8/design-previews/671cd1d6-a4d6-4eab-8e69-10e778569288/1685141170172-thumbnail.jpeg' }}
                         style={{ width: "100%", alignSelf: 'center', height: 120 }} />
@@ -125,22 +125,22 @@ const Login = ({ navigation }: any) => {
                     withShadow
                     autoFocus
                     codeTextStyle={{}}
-                    containerStyle={{borderRadius: 20}}
+                    containerStyle={{ borderRadius: 20 }}
                     textInputStyle={{}}
                     flagButtonStyle={{}}
-                    textContainerStyle={{borderRadius: 20}}
+                    textContainerStyle={{ borderRadius: 20 }}
                     countryPickerButtonStyle={{}}
                 />
                 <StyledButton style={{ marginTop: 10 }} onPress={singIn}>
                     {
                         loading
                             ? <ActivityIndicator size="small" color="white" />
-                            : <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Login</Text>
+                            : <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Send Code</Text>
                     }
                 </StyledButton>
 
             </SafeAreaView>
-            <View style={{height: '20%'}}>
+            <View style={{ height: '20%' }}>
 
             </View>
         </View >
@@ -158,10 +158,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     wrapper: {
-        display: 'flex' , 
-        gap: 10 ,
-        justifyContent: 'center' ,
-        height: '80%' 
+        display: 'flex',
+        gap: 10,
+        justifyContent: 'center',
+        height: '80%'
     },
     message: {
 

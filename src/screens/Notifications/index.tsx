@@ -23,20 +23,20 @@ const notificationsData = [
     timestamp: '2023-05-26T12:00:00',
   },
   {
-    id: '3',
-    title: 'Notification 3',
+    id: '4',
+    title: 'Notification 4',
     message: 'This is the third notification',
     timestamp: '2023-05-26T12:00:00',
   },
   {
-    id: '3',
-    title: 'Notification 3',
+    id: '5',
+    title: 'Notification 5',  
     message: 'This is the third notification',
     timestamp: '2023-05-26T12:00:00',
   },
   {
-    id: '3',
-    title: 'Notification 3',
+    id: '6',
+    title: 'Notification 6',
     message: 'This is the third notification',
     timestamp: '2023-05-26T12:00:00',
   },
@@ -44,8 +44,6 @@ const notificationsData = [
 
 const NotificationsScreen = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.screenTitle}>Notifications</Text>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {notificationsData.map((item) => (
           <View style={styles.notificationContainer} key={item.id}>
@@ -55,30 +53,22 @@ const NotificationsScreen = () => {
           </View>
         ))}
       </ScrollView>
-    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    padding: 16,
-  },
-  screenTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: COLORS.primary,
-    marginBottom: 16,
-  },
   scrollContainer: {
     flexGrow: 1,
+    padding: 10
   },
   notificationContainer: {
     backgroundColor: '#F5F5F5',
     borderRadius: 8,
     padding: 16,
     marginBottom: 16,
+    borderBottomColor: 'lightgray',
+    borderBottomWidth: 1 ,
+    elevation: 2 ,
   },
   notificationTitle: {
     fontSize: 18,

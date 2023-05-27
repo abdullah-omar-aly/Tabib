@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { ROUTES } from '../../constants';
-import { SafeAreaView, View, Text, StyleSheet, StatusBar } from 'react-native';
-
+import { COLORS, ROUTES } from '../../constants';
+import { SafeAreaView, View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import Feather from 'react-native-vector-icons/Feather'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import {
   CodeField,
   Cursor,
@@ -11,11 +12,13 @@ import {
 import StyledButton from '../../components/StyledButton';
 import { ActivityIndicator } from 'react-native';
 import colors from '../../constants/colors';
+import { useRoute } from '@react-navigation/native'
 
-
-const VerifyOTP = ({navigation} :any) => {
-
-
+const VerifyOTP = ({ navigation }: any) => {
+  const route = useRoute()
+  const { phoneNumber }: any = route.params
+  console.log('param list ', route.params)
+  console.log('param', phoneNumber)
 
   const [loading, setLoading] = useState(false);
 
@@ -56,35 +59,60 @@ const VerifyOTP = ({navigation} :any) => {
 
   return (
     <SafeAreaView style={styles.root}>
-        <StatusBar backgroundColor={colors.primary}/>
-        <View style={{display:'flex' ,gap: 10 , height: 200}}>
-        <CodeField
-        ref={ref}
-        {...props}
-        // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
-        value={value}
-        onChangeText={setValue}
-        cellCount={6}
-        rootStyle={styles.codeFieldRoot}
-        keyboardType="number-pad"
-        textContentType="oneTimeCode"
-        renderCell={({ index, symbol, isFocused }) => (
-          <Text
-            key={index}
-            style={[styles.cell, isFocused && styles.focusCell]}
-            onLayout={getCellOnLayoutHandler(index)}>
-            {symbol || (isFocused ? <Cursor /> : null)}
-          </Text>
-        )}
-      />
-      <StyledButton style={{ marginTop: 10 }} onPress={handleOTPSubmit} disabled={value.length != 6}>
-        {
-          loading
-            ? <ActivityIndicator size="small" color="white" />
-            : <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Login</Text>
-        }
-      </StyledButton>
+      <StatusBar backgroundColor={colors.primary} />
+
+      <View style={{display: 'flex' , alignItems: 'center' , marginVertical: 20}}>
+        <MaterialIcons name="security" size={100} color={COLORS.primary}/>
+      </View>
+      <View>
+          <Text style={{textAlign: 'center' , fontSize: 16}}>We have sent the verification code to your mobile number</Text>
         </View>
+
+      <View style={{ display: 'flex', gap: 5, height: 200 }}>
+        <View style={{ marginBottom: 10 }}>
+          <CodeField
+            ref={ref}
+            {...props}
+            // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
+            value={value}
+            onChangeText={setValue}
+            cellCount={6}
+            rootStyle={styles.codeFieldRoot}
+            keyboardType="number-pad"
+            textContentType="oneTimeCode"
+            renderCell={({ index, symbol, isFocused }) => (
+              <Text
+                key={index}
+                style={[styles.cell, isFocused && styles.focusCell]}
+                onLayout={getCellOnLayoutHandler(index)}>
+                {symbol || (isFocused ? <Cursor /> : null)}
+              </Text>
+            )}
+          />
+        </View>
+
+
+
+        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: "center", alignItems: 'center', gap: 10 }}>
+          <Text style={{ fontSize: 18, letterSpacing: 1 }}>{phoneNumber}</Text>
+          <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.goBack()} style={{ borderWidth: 1, borderColor: COLORS.primary, borderRadius: 100, padding: 3 }}><Feather name='edit-3' size={20} color={COLORS.primary} /></TouchableOpacity>
+        </View>
+
+        <StyledButton style={{ marginTop: 10, backgroundColor: 'white', borderWidth: 1, borderColor: 'gray', elevation: 0 }} onPress={handleOTPSubmit} disabled={value.length != 6}>
+          {
+            loading
+              ? <ActivityIndicator size="small" color="white" />
+              : <Text style={{ color: 'rgb(0,0,0)', fontSize: 18, textAlign: 'center' }}>Send Again</Text>
+          }
+        </StyledButton>
+        <StyledButton style={{ marginTop: 10 }} onPress={handleOTPSubmit} disabled={value.length != 6}>
+          {
+            loading
+              ? <ActivityIndicator size="small" color="white" />
+              : <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Submit</Text>
+          }
+        </StyledButton>
+      </View>
     </SafeAreaView>
   )
 
@@ -96,7 +124,7 @@ export default VerifyOTP
 
 
 const styles = StyleSheet.create({
-  root: { flex: 1, padding: 20 , display: 'flex' , justifyContent: 'center' , gap: 10},
+  root: { display: 'flex', justifyContent: 'center' , gap: 10 , padding: 20 },
   title: { textAlign: 'center', fontSize: 30 },
   codeFieldRoot: { marginTop: 20 },
   cell: {
@@ -104,12 +132,12 @@ const styles = StyleSheet.create({
     height: 45,
     lineHeight: 38,
     fontSize: 24,
-    borderRadius: 10 ,
+    borderRadius: 10,
     borderWidth: 2,
     borderColor: '#00000030',
     textAlign: 'center',
   },
   focusCell: {
-    borderColor: '#000',
+    borderColor: COLORS.primary,
   },
 });

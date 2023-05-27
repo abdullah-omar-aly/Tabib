@@ -7,10 +7,13 @@ import {
 
 
 import AppNavigator from './src/AppNavigator';
+import { AuthContextProvider } from './src/context/AuthContext';
 export default function App() {
   return (
     // <GestureHandlerRootView style={{flex: 1}}>
+    <AuthContextProvider>
       <AppNavigator />
+    </AuthContextProvider>
   // </GestureHandlerRootView>
   );
 }

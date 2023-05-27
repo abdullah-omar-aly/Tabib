@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Button, StatusBar, TouchableHighlight, KeyboardAvoidingView, TouchableWithoutFeedback, ScrollView, StyleSheet, Image } from 'react-native'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { CommonActions, useNavigation, useRoute } from '@react-navigation/native'
 import { COLORS, ROUTES } from '../../constants'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -64,7 +64,7 @@ function ProfileScreen({ navigation }: any) {
           <View>
             <Text style={Styles.accountInfoName}>Abdullah omar</Text>
             <Text style={Styles.accountInfoEmail}>abdullahomar.dev@gmail.com</Text>
-          </View>  
+          </View>
         </View>
       </View>
 
@@ -105,7 +105,17 @@ function ProfileScreen({ navigation }: any) {
         <TouchableHighlight
           activeOpacity={0.8}
           underlayColor="#DDDDDD"
-          onPress={() => navigation.navigate(ROUTES.SIGN_IN)}
+          onPress={() => {
+            // Reset the navigation stack and remove all screens
+            navigation.dispatch(
+              CommonActions.reset({
+                index: 0, // Index of the new screen in the stack
+                routes: [
+                  { name: ROUTES.SIGN_IN }, // New screen to navigate to
+                ],
+              })
+            );
+          }}
           style={{
             borderRadius: 10
           }}

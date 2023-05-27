@@ -84,21 +84,15 @@ const AppNavigator = () => {
             // initialRouteName={ROUTES.APP}
 
             >
-                {
-                    isSignedIn ? (
-                        <>
+    
                             <Stack.Screen name={ROUTES.MAIN} component={TabNavigator} />
                             <Stack.Screen name={ROUTES.COURSE_DETAILS} component={CourseDetailsScreen} />
-                            <Stack.Screen name={ROUTES.NOTIFICATIONS} component={NotificationsScreen} />
-                        </>
-                    ) : (
-                        <>
+                            <Stack.Screen name={ROUTES.NOTIFICATIONS} component={NotificationsScreen} options={{headerShown: true , headerTintColor: 'white'}}/>
+       
                             <Stack.Screen name={ROUTES.SIGN_IN} component={SignInScreen} />
-                            <Stack.Screen name={ROUTES.VERIFY_OTP} component={VerifyOTPScreen} />
-                            <Stack.Screen name={ROUTES.COMPLETE_PROFILE_INFO} component={CompleteProfileInfoScreen} />
-                        </>
-                    )
-                }
+                            <Stack.Screen name={ROUTES.VERIFY_OTP} component={VerifyOTPScreen} options={{headerShown: true , headerTintColor: 'white'}}/>
+                            <Stack.Screen name={ROUTES.COMPLETE_PROFILE_INFO} component={CompleteProfileInfoScreen} options={{headerShown: true , headerTintColor: 'white' , headerTitle: "Complete your profile" , headerLeft: () => <></> }}/>
+    
             </Stack.Navigator>
         </NavigationContainer>
     )
