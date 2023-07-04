@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
   },
   scrollView: {
-    // backgroundColor: COLORS.lightGray,
+    backgroundColor: COLORS.white,
     // paddingTop: StatusBar.currentHeight ,
     // marginHorizontal: 20,
   },

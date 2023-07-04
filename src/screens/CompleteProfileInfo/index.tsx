@@ -40,7 +40,6 @@ function CompleteProfileInfo({ navigation }: any) {
 
 
       //upload the profile picture
-      ////////
 
       const profilePicUrl = await getDownloadURL(picRef)
       console.log(profilePicUrl)

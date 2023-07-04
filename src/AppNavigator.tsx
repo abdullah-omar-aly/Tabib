@@ -36,18 +36,13 @@ export type RootStackParamList = {
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
-// const Lol = createStackNavigator()
-
-// const LolNavigator = () => (
-//     <Lol.Navigator
-// )
 
 const TabNavigator = () => {
     return (
         <Tab.Navigator
             initialRouteName={ROUTES.HOME}
             screenOptions={{
-                tabBarShowLabel: false, tabBarActiveTintColor: COLORS.primary, headerShown: false,
+                tabBarShowLabel: false, tabBarActiveTintColor: COLORS.primary, headerShown: false
             }}
         >
             <Tab.Screen
