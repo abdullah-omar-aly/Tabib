@@ -1,6 +1,6 @@
 # Tabib (online courses platform)
 <div align="center">
-<img src="./assets/logo.jpeg" alt="Image" width="300" height="200" />
+<img src="./assets/app_logo.jpeg" alt="Image" width="300" height="200" />
 </div>
 
 
